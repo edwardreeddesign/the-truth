@@ -24,3 +24,7 @@ a {
     background: black;
   }
 }
+
+ul {
+  list-style: none;
+}
