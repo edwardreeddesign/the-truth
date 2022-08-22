@@ -1,18 +1,27 @@
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-const categories = [
-  {
-    name: 'Politics',
-    slug: 'politics',
-  },
-  {
-    name: 'Conspiracies',
-    slug: 'conspiracies',
-  },
-];
+import { getCategories } from '../services';
+
+// const categories = [
+//   {
+//     name: 'Politics',
+//     slug: 'politics',
+//   },
+//   {
+//     name: 'Conspiracies',
+//     slug: 'conspiracies',
+//   },
+// ];
 
 const Header = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getCategories().then(newCategories => setCategories(newCategories));
+  }, []);
+
   return (
     <Nav>
       <Logo>
@@ -43,6 +52,8 @@ const Nav = styled.div`
   margin: auto;
   padding: 0 2.5rem;
   margin-bottom: 2.25rem;
+  /* border-bottom: 1px solid #ccc; */
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.7);
 `;
 
 const Logo = styled.div``;

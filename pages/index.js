@@ -6,6 +6,7 @@ import PostCard from '../components/PostCard';
 import PostWidget from '../components/PostWidget';
 import CategoryWidget from '../components/CategoryWidget';
 import { getPosts } from '../services';
+import FeaturedPosts from '../sections/FeaturedPosts';
 
 export default function Home({ posts }) {
   return (
@@ -16,6 +17,7 @@ export default function Home({ posts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <FeaturedPosts /> */}
+      <FeaturedPosts />
 
       <Main>
         <Posts>
