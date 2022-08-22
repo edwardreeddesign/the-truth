@@ -9,15 +9,15 @@ import PostDetail from '../../components/PostDetail';
 import PostWidget from '../../components/PostWidget';
 import { getPosts, getPostDetails } from '../../services';
 
-const PostDetails = ({ post, title }) => {
+const PostDetails = ({ post }) => {
   const router = useRouter();
 
-  if (router.fallback) {
-    return <p>Loading...</p>;
+  if (router.fallback || !post) {
+    return <p style={{ color: 'red', fontSize: '8rem' }}>Loading...</p>;
   }
 
   return (
-    <Layout title={post.title}>
+    <Layout title={post && post.title}>
       <Container>
         <GridWrapper>
           <PostWrapper>
