@@ -11,17 +11,21 @@ const PostWidget = ({ categories, slug }) => {
 
   useEffect(() => {
     if (slug) {
-      getSimilarPosts(categories, slug).then(result => setRelatedPosts(result));
+      getSimilarPosts(categories, slug).then(result => {
+        setRelatedPosts(result);
+      });
     } else {
-      getRecentPosts().then(result => setRelatedPosts(result));
+      getRecentPosts().then(result => {
+        setRelatedPosts(result);
+      });
     }
   }, [categories, slug]);
 
   return (
     <Container>
       <h1>{slug ? 'Related Posts' : 'Recent Posts'}</h1>
-      {relatedPosts.map(post => (
-        <PostWrapper key={post.title}>
+      {relatedPosts.map((post, index) => (
+        <PostWrapper key={index}>
           <ImageWrapper>
             <img
               alt={post.title}
@@ -32,7 +36,7 @@ const PostWidget = ({ categories, slug }) => {
           </ImageWrapper>
           <Posts>
             <p>{moment(post.createdAt).format('MMM DD, YYYY')}</p>
-            <Link href={`post/${post.slug}`} key={post.title}>
+            <Link href={`/post/${post.slug}`} key={index}>
               <a>{post.title} </a>
             </Link>
           </Posts>

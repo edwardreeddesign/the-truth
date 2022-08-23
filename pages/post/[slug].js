@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import AdjacentPostCard from '../../components/AdjacentPostCard';
 import Author from '../../components/Author';
 import CategoryWidget from '../../components/CategoryWidget';
 import Comments from '../../components/Comments';
@@ -7,6 +8,7 @@ import CommentsForm from '../../components/CommentsForm';
 import Layout from '../../components/Layout';
 import PostDetail from '../../components/PostDetail';
 import PostWidget from '../../components/PostWidget';
+import AdjacentPosts from '../../sections/AdjacentPosts';
 import { getPosts, getPostDetails } from '../../services';
 
 const PostDetails = ({ post }) => {
@@ -23,6 +25,7 @@ const PostDetails = ({ post }) => {
           <PostWrapper>
             <PostDetail post={post} />
             <Author author={post.author} />
+            <AdjacentPosts slug={post.slug} createdAt={post.createdAt} />
             <CommentsForm slug={post.slug} />
             <Comments slug={post.slug} />
           </PostWrapper>
